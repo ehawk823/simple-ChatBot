@@ -30,7 +30,7 @@ io.on('connect', function(socket) {
   var questionNum = 0; // keep count of question, used for IF condition.
   socket.on('loaded', function(){// we wait until the client has loaded and contacted us that it is ready to go.
 
-  socket.emit('answer',"Hey, Hello I am \"___*-\" a simple chat bot example."); //We start with the introduction;
+  socket.emit('answer',"Hey, I am Evan's chat bot."); //We start with the introduction;
   setTimeout(timedQuestion, 2500, socket,"What is your Name?"); // Wait a moment and respond with a question.
 
 });
@@ -51,17 +51,17 @@ function bot(data,socket,questionNum) {
 
 /// These are the main statments that make up the conversation.
   if (questionNum == 0) {
-  answer= 'Hello ' + input + ' :-)';// output response
+  answer= 'Hello ' + input + ' You seem cool.';// output response
   waitTime =2000;
-  question = 'How old are you?';			    	// load next question
+  question = 'What is your favorite movie';			    	// load next question
   }
   else if (questionNum == 1) {
-  answer= 'Really ' + input + ' Years old? So that means you where born in: ' + (2018-parseInt(input));// output response
+  answer= 'Really ' + input + ' is a great one! ';// output response
   waitTime =2000;
-  question = 'Where do you live?';			    	// load next question
+  question = 'What do you think of Cornell Tech?';			    	// load next question
   }
   else if (questionNum == 2) {
-  answer= ' Cool! I have never been to ' + input+'.';
+  answer= 'Interesting, I have heard it is a cool place.';
   waitTime =2000;
   question = 'Whats your favorite Color?';			    	// load next question
   }
@@ -79,8 +79,8 @@ function bot(data,socket,questionNum) {
     }
     else if(input.toLowerCase()==='no'|| input===0){
         socket.emit('changeFont','white'); /// we really should look up the inverse of what we said befor.
-        answer=''
-        question='How about now?';
+        answer='How about now?'
+        question='';
         waitTime =0;
         questionNum--; // Here we go back in the question number this can end up in a loop
     }else{
